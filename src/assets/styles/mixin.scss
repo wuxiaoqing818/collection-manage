@@ -1,0 +1,63 @@
+//-----------------------------------清除浮动-----------------------------------------  
+//引用例子：@include clearfix();  
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// 单行文本不换行
+@mixin nowrap() {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+//-----------------------------------内阴影和外阴影-----------------------------------------  
+@mixin box-outside($pxs, $range, $opacity) {
+  box-shadow: $pxs $pxs $range rgba(0, 0, 0, $opacity);
+}
+
+@mixin box-inset($pxs, $range, $opacity) {
+  box-shadow: $pxs $pxs $range rgba(0, 0, 0, $opacity) inset;
+}
+
+//-----------------------------------隐藏文字-----------------------------------------  
+//引用例子：  
+//.logo{  
+//    background: url("logo.png");  
+//    height:100px;  
+//    width:200px;  
+//   @include hide-text;  
+//}  
+@mixin hide-text {
+  overflow: hidden;
+  text-indent: -9000px;
+  display: block;
+} //-----------------------------------透明度-----------------------------------------  
+//引用例子:@include opacity(0.8);  
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8  
+}
+
+// 从下往上淡入
+@keyframes fadeUp {
+  0% {
+    top: 100px;
+    @include opacity(0);
+  }
+  100% {
+    top: 0;
+    @include opacity(1);
+  }
+}
+
+//hover颜色
+$hover-color:#409EFF;

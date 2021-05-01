@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <!-- 解决引入第三方图片不显示问题403防盗链 -->
+  <meta name="referrer" content="no-referrer">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <title>collectionManage</title>
+</head>
+<style>
+  html,
+  body {
+    font-size: 14px;
+  }
+</style>
+<script type="text/javascript">
+  localStorage.clear();
+  var ajax;
+  if (window.XMLHttpRequest) {
+    ajax = new XMLHttpRequest();
+  } else if (window.ActiveXObject) {
+    ajax = new window.ActiveXObject();
+  } else {
+    alert("请升级至最新版本的浏览器");
+  }
+    // if (ajax != null) {
+    //   var host = window.location.host;
+    //   ajax.open("POST", 'http://' + host + '/MicroMall-bootstrap/custom-page/common/get-version.do', true);
+    //   ajax.send(JSON.stringify({}));
+    //   ajax.onreadystatechange = function () {
+    //     if (ajax.readyState == 4 && ajax.status == 200) {
+    //       var res = JSON.parse(ajax.responseText);
+    //       if (res.result == "success") {
+    //         var arr = ["chunk-vendors", "index"]
+    //         for (var i = 0; i < arr.length; i++) {
+    //           var scriptEle = document.createElement("script");
+    //           scriptEle.setAttribute("type", "text/javascript");
+    //           scriptEle.setAttribute("src", './js/' + arr[i] + '.js?v=' + res.version);
+    //           document.head.appendChild(scriptEle);
+    //         }
+    //       }
+    //     }
+    //   };
+    // }
+</script>
+<script>
+  (function (doc, win, pwidth, prem) {
+    var docEl = doc.documentElement,
+      resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+      recalc = function () {
+        var clientWidth = docEl.clientWidth;
+        if (!clientWidth) return;
+        docEl.style.fontSize = clientWidth / pwidth * prem + 'px';
+      };
+    if (!doc.addEventListener) return;
+    win.addEventListener(resizeEvt, recalc, false);
+    doc.addEventListener('DOMContentLoaded', recalc, false);
+  })(document, window, 1920, 100);
+</script>
+
+<body>
+  <noscript>
+    <strong>We're sorry but editor doesn't work properly without JavaScript enabled. Please enable it to
+      continue.</strong>
+  </noscript>
+  <div id="app"></div>
+</body>
+
+</html>
